@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const { exec } = require('child_process');
 const app = express();
 const port = 3000;
@@ -29,9 +30,11 @@ function runCommand(command, cwd) {
     });
 }
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Route pour servir le fichier HTML
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Route pour exécuter terraform apply
