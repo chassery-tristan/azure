@@ -43,6 +43,7 @@ app.post('/terraform-apply', async (req, res) => {
         console.log(out);
         out = await runCommand('sh tmp.sh', './');
         console.log(out);
+        window.location.href = "http://4.211.108.28/";
 
 /*        await runCommand('sudo su stack', terraformDirectory);
         let output = await runCommand('cd ~/terraform', terraformDirectory);
