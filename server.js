@@ -39,8 +39,14 @@ app.post('/terraform-apply', async (req, res) => {
     try {
         // sudo su stack
         // cd ~/terraform
-        await runCommand('sudo su stack', terraformDirectory);
-        await runCommand('cd ~/terraform', terraformDirectory);
+        let out = await runCommand('sh test.sh', './');
+        console.log(out);
+        out = await runCommand('sh tmp.sh', './');
+        console.log(out);
+
+/*        await runCommand('sudo su stack', terraformDirectory);
+        let output = await runCommand('cd ~/terraform', terraformDirectory);
+        console.log(output);
 
         console.log('[DB] Initializing Terraform...');
         await runCommand('terraform init', terraformDB);
@@ -68,6 +74,7 @@ app.post('/terraform-apply', async (req, res) => {
         output = await runCommand('terraform apply -auto-approve tfplan', terraformWeb);
 
         res.send('Terraform apply completed successfully:\n' + output);
+        */
     } catch (error) {
         res.status(500).send('Error during Terraform apply:\n' + error);
     }

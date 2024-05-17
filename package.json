@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/chassery-tristan/azure#readme",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "ssh2": "^1.15.0",
+    "ssh2shell": "^2.0.9"
   }
 }
